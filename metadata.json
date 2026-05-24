@@ -1,5 +1,5 @@
 {
-  "name": "CodeCanvas",
+  "name": "Dr Canvas",
   "description": "Your Ultimate AI Programming Companion",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]

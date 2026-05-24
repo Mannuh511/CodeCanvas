@@ -57,7 +57,7 @@ fun AiAssistantScreen(viewModel: MainViewModel) {
     ) {
         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(bottom = 16.dp)) {
             Icon(Icons.Default.AutoAwesome, contentDescription = null, tint = NeonCyan)
-            Text(" CodeCanvas AI Tutor", color = SoftWhite, fontSize = 20.sp, modifier = Modifier.padding(start = 8.dp))
+            Text(" Dr Canvas AI Tutor", color = SoftWhite, fontSize = 20.sp, modifier = Modifier.padding(start = 8.dp))
         }
 
         LazyColumn(

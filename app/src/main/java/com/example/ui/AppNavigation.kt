@@ -35,7 +35,7 @@ fun AppNavigation(viewModel: MainViewModel) {
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = if (currentUser != null) "dashboard" else "login",
+            startDestination = "login",
             modifier = Modifier.padding(innerPadding),
             enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Left, animationSpec = tween(300)) },
             exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Left, animationSpec = tween(300)) },

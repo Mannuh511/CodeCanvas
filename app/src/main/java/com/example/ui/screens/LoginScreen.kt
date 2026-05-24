@@ -27,6 +27,7 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,6 +41,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.platform.LocalContext
+import android.widget.Toast
+import androidx.compose.material.icons.filled.Phone
 import com.example.ui.MainViewModel
 import com.example.ui.components.DeveloperFooter
 import com.example.ui.theme.DarkSurface
@@ -50,7 +54,18 @@ import com.example.ui.theme.NeonCyan
 fun LoginScreen(onLoginSuccess: () -> Unit, viewModel: MainViewModel) {
     var email by remember { mutableStateOf("") }
     var pin by remember { mutableStateOf("") }
+    var phone by remember { mutableStateOf("") }
     var hasError by remember { mutableStateOf(false) }
+    var loginSuccessTrigger by remember { mutableStateOf(false) }
+    val context = LocalContext.current
+
+    LaunchedEffect(loginSuccessTrigger) {
+        if (loginSuccessTrigger) {
+            Toast.makeText(context, "Mannuh Welcomes you to Dr Canvas", Toast.LENGTH_LONG).show()
+            onLoginSuccess()
+            loginSuccessTrigger = false
+        }
+    }
 
     Box(
         modifier = Modifier
@@ -76,7 +91,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit, viewModel: MainViewModel) {
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
-                text = "CodeCanvas",
+                text = "Dr Canvas",
                 color = SoftWhite,
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold,
@@ -114,10 +129,24 @@ fun LoginScreen(onLoginSuccess: () -> Unit, viewModel: MainViewModel) {
                     OutlinedTextField(
                         value = pin,
                         onValueChange = { pin = it; hasError = false },
-                        label = { Text("Password PIN") },
+                        label = { Text("Email Password") },
                         leadingIcon = { Icon(Icons.Default.Lock, contentDescription = null) },
                         visualTransformation = PasswordVisualTransformation(),
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedBorderColor = NeonCyan,
+                            focusedLabelColor = NeonCyan
+                        ),
+                        singleLine = true
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    OutlinedTextField(
+                        value = phone,
+                        onValueChange = { phone = it; hasError = false },
+                        label = { Text("Phone Number") },
+                        leadingIcon = { Icon(Icons.Default.Phone, contentDescription = null) },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
                         modifier = Modifier.fillMaxWidth(),
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedBorderColor = NeonCyan,
@@ -134,10 +163,10 @@ fun LoginScreen(onLoginSuccess: () -> Unit, viewModel: MainViewModel) {
 
                     Button(
                         onClick = {
-                            if (email.isNotBlank() && pin.isNotBlank()) {
+                            if (email.isNotBlank() && pin.isNotBlank() && phone.isNotBlank()) {
                                 viewModel.login(email, pin) { success ->
                                     if (success) {
-                                        onLoginSuccess()
+                                        loginSuccessTrigger = true
                                     } else {
                                         hasError = true
                                     }

@@ -32,7 +32,7 @@ import com.example.ui.components.DeveloperFooter
 
 @Composable
 fun CodeEditorScreen(viewModel: MainViewModel) {
-    var code by remember { mutableStateOf("// Write your code here...\nfun main() {\n    println(\"Hello CodeCanvas!\")\n}") }
+    var code by remember { mutableStateOf("// Write your code here...\nfun main() {\n    println(\"Hello Dr Canvas!\")\n}") }
     var filename by remember { mutableStateOf("main.kt") }
 
     Column(

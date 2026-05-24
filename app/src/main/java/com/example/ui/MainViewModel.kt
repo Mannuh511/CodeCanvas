@@ -93,7 +93,7 @@ class MainViewModel(private val repository: AppRepository) : ViewModel() {
                 
                 val req = GenerateContentRequest(
                     contents = contents,
-                    systemInstruction = Content(listOf(Part("You are a professional AI programming assistant in a prestigious IDE app named CodeCanvas. Keep responses expert-level, actionable, and formatted well with markdown.")))
+                    systemInstruction = Content(listOf(Part("You are a professional AI programming assistant in a prestigious IDE app named Dr Canvas. Keep responses expert-level, actionable, and formatted well with markdown.")))
                 )
                 val response = RetrofitClient.service.generateContent(apiKey, req)
                 val botText = response.candidates?.firstOrNull()?.content?.parts?.firstOrNull()?.text ?: "I am encountering an issue generating a response."

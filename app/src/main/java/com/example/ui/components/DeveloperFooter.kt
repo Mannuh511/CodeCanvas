@@ -26,7 +26,7 @@ fun DeveloperFooter() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "© CodeCanvas. All Rights Reserved. Unauthorized modification prohibited.",
+            text = "© Dr Canvas. All Rights Reserved. Unauthorized modification prohibited.",
             color = MaterialTheme.colorScheme.error,
             fontSize = 10.sp,
             textAlign = TextAlign.Center,
@@ -34,7 +34,7 @@ fun DeveloperFooter() {
             modifier = Modifier.padding(bottom = 8.dp)
         )
         Text(
-            text = "Created and Developed by: Mannuh",
+            text = "Created and developed by Emmanuel M.",
             color = SoftGray,
             fontSize = 12.sp,
             fontWeight = FontWeight.Medium
@@ -45,7 +45,7 @@ fun DeveloperFooter() {
             fontSize = 11.sp
         )
         Text(
-            text = "Location: Meru, Kenya (Admin-Only Control System Active)",
+            text = "Meru, Kenya.",
             color = SoftGray,
             fontSize = 11.sp,
             modifier = Modifier.padding(bottom = 8.dp)
