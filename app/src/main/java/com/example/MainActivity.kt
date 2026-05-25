@@ -29,7 +29,9 @@ class MainActivity : ComponentActivity() {
         Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java, "codecanvas.db"
-        ).build()
+        )
+        .fallbackToDestructiveMigration(dropAllTables = true)
+        .build()
     }
 
     private val repository by lazy { AppRepository(db.dao()) }
